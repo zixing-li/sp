@@ -7,6 +7,7 @@ import App from './containers/App';
 import Home from './components/Home';
 import Industry from './components/Industry';
 import Analytics from './components/Analytics';
+import SignIn from './components/SignIn';
 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -19,6 +20,7 @@ ReactDOM.render((
         <Route exact path="/" component={Home} />
         <Route path="/industry" component={Industry} />
         <Route path="/analytics" component={Analytics} />
+        <Route path="/signin" component={SignIn} />
       </App>
     {/* </Provider> */}
   </BrowserRouter>

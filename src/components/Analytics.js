@@ -1,6 +1,33 @@
 import React from 'react';
-import MyChart from './Chart'
+// import MyChart from './Chart'
 import '../assets/styles/Analytics.css';
+import {Line} from 'react-chartjs-2';
+
+const data = {
+  labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+  datasets: [{
+    data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+    lineTension: 0,
+    backgroundColor: 'transparent',
+    borderColor: '#007bff',
+    borderWidth: 4,
+    pointBackgroundColor: '#007bff'
+  }]
+};
+
+const options = {
+  scales: {
+    yAxes: [{
+      ticks: {
+        beginAtZero: false
+      }
+    }]
+  },
+  legend: {
+    display: false,
+  }
+};
+
 
 const Analytics = () => {
   return (
@@ -97,8 +124,9 @@ const Analytics = () => {
             </div>
           </div>
 
-          <canvas className="my-4" id="myChart" width="900" height="380">{MyChart}</canvas>
-
+          {/* <canvas className="my-4" id="myChart" width="900" height="380"><MyChart/></canvas> */}
+          <Line data={data} options={options}/>
+          
           <h2>Section title</h2>
           <div className="table-responsive">
             <table className="table table-striped table-sm">
