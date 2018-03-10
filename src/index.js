@@ -11,10 +11,12 @@ import Analytics from './components/Analytics';
 import SignIn from './components/SignIn';
 
 import { Provider } from 'react-redux';
-import store from './store';
+import configureStore  from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 
 import { PersistGate } from 'redux-persist/integration/react'
+
+const { persistor, store } = configureStore()
 
 ReactDOM.render((
   <BrowserRouter>
