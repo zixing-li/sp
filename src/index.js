@@ -14,9 +14,12 @@ import { Provider } from 'react-redux';
 import store from './store';
 import registerServiceWorker from './registerServiceWorker';
 
+import { PersistGate } from 'redux-persist/integration/react'
+
 ReactDOM.render((
   <BrowserRouter>
     <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
       <App>
         <Route exact path="/" component={Home} />
         <Route path="/i/:industryName" component={Industry} />
@@ -24,6 +27,7 @@ ReactDOM.render((
         <Route path="/analytics" component={Analytics} />
         <Route path="/signin" component={SignIn} />
       </App>
+      </PersistGate>
     </Provider>
   </BrowserRouter>
 ), document.getElementById('root'));
