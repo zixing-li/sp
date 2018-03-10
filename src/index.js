@@ -15,14 +15,14 @@ import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render((
   <BrowserRouter>
-    {/* <Provider store={store}> */}
+    <Provider store={store}>
       <App>
         <Route exact path="/" component={Home} />
         <Route path="/industry" component={Industry} />
         <Route path="/analytics" component={Analytics} />
         <Route path="/signin" component={SignIn} />
       </App>
-    {/* </Provider> */}
+    </Provider>
   </BrowserRouter>
 ), document.getElementById('root'));
 
