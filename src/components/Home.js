@@ -5,9 +5,8 @@ import '../assets/styles/Home.css';
 import { Link } from 'react-router-dom';
 
 class Home extends Component {
-  renderHome = () => {
+  renderIndustryThumbnails = () => {
     const industries = this.props.industries;
-    console.log(industries)
     if (!industries) {return;}
 
     const industryThumbnails = industries.map((obj, i) => {
@@ -77,33 +76,28 @@ class Home extends Component {
             <span className="sr-only">Next</span>
           </a>
         </div>
-
         <div className="album py-5 bg-light">
           <div className="container">
-
-            <div class="row">
-              <div class="input-group col-md-8 offset-md-2">
-                <input class="form-control py-2 border-right-0 border" type="search" value="search" id="example-search-input" />
-                <span class="input-group-append">
-                  <button class="btn btn-outline-secondary border-left-0 border" type="button">
-                      <i class="fa fa-search"></i>
+            {/* Search Bar */}
+            <div className="row">
+              <div className="input-group col-md-8 offset-md-2">
+                <input className="form-control py-2 border-right-0 border" type="search" defaultValue="search" id="example-search-input" />
+                <span className="input-group-append">
+                  <button className="btn btn-outline-secondary border-left-0 border" type="button">
+                      <i className="fa fa-search"></i>
                   </button>
                 </span>
               </div>
             </div>
             <br/>
             <br/>
-
-            {this.renderHome()}
+            {this.renderIndustryThumbnails()}
           </div>
         </div>
-        
       </main>
     )
   }
 }
-
-// export default Home
 
 export default connect(
   (state) => ({

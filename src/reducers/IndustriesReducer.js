@@ -9,7 +9,8 @@ const initialState = {
     "Social Advice",
     "Gadgets",
     "College Application"
-  ]
+  ],
+  currentIndustry: {}
 }
 
 export default function(state = initialState, action) {

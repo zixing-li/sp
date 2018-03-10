@@ -8,3 +8,5 @@ class Package extends Component {
     )
   }
 }
+
+export default Package
