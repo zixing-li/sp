@@ -19,6 +19,19 @@ class Industry extends Component {
         <div className="album py-5 bg-light">
           <div className="container">
 
+            <div class="row">
+              <div class="input-group col-md-8 offset-md-2">
+                <input class="form-control py-2 border-right-0 border" type="search" value="search" id="example-search-input" />
+                <span class="input-group-append">
+                  <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                      <i class="fa fa-search"></i>
+                  </button>
+                </span>
+              </div>
+            </div>
+            <br/>
+            <br/>
+
             <div className="row">
               <div className="col-md-4">
                 <div className="card mb-4 box-shadow">
