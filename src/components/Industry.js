@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 
 class Industry extends Component {
   renderPackageThumbnails = () => {
-    const packages = this.props.packages;
-    if (!packages) {return;}
+    const packageList = this.props.packageList;
+    if (!packageList) {return;}
 
-    const packageThumbnails = packages.map((obj, i) => {
+    const packageThumbnails = packageList.map((obj, i) => {
       return (
         <div className="col-md-4" key={`thumbnail${i}`}>
           <div className="card mb-4 box-shadow">
@@ -41,7 +41,7 @@ class Industry extends Component {
       <main role="main">
         <section className="jumbotron text-center">
           <div className="container">
-            <h1 className="jumbotron-heading">Example Industry</h1>
+            <h1 className="jumbotron-heading">{this.props.selectedIndustry.name}</h1>
             {/* <p className="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
             <p>
               <a href="#" className="btn btn-primary my-2">Main call to action</a>
@@ -74,9 +74,10 @@ class Industry extends Component {
 
 export default connect(
   (state) => ({
-    packages: state.packages.packageList
+    packageList: state.packages.packageList,
+    selectedIndustry: state.industries.selectedIndustry,
   }),
   (dispatch) => bindActionCreators({ 
 
-   }, dispatch)
+  }, dispatch)
 )(Industry);

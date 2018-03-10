@@ -19,7 +19,7 @@ ReactDOM.render((
     <Provider store={store}>
       <App>
         <Route exact path="/" component={Home} />
-        <Route path="/industry" component={Industry} />
+        <Route path="/i/:industryName" component={Industry} />
         <Route path="/package" component={Package} />
         <Route path="/analytics" component={Analytics} />
         <Route path="/signin" component={SignIn} />

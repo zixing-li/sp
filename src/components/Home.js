@@ -3,17 +3,21 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import '../assets/styles/Home.css';
 import { Link } from 'react-router-dom';
+import { 
+  selectIndustry,
+ } from '../actions/actionCreators';
 
 class Home extends Component {
-  renderIndustryThumbnails = () => {
-    const industries = this.props.industries;
-    if (!industries) {return;}
 
-    const industryThumbnails = industries.map((obj, i) => {
+  renderIndustryThumbnails = () => {
+    const industryList = this.props.industryList;
+    if (!industryList) {return;}
+
+    const industryThumbnails = industryList.map((obj, i) => {
       return (
         <div className="col-md-4" key={`thumbnail${i}`}>
           <div className="card mb-4 box-shadow">
-            <Link to="/industry"><img className="card-img-top" data-src={"holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text="+obj} alt="Card image cap" /></Link>
+            <Link to={`/i/${obj.name}`} onClick={()=>this.props.selectIndustry(obj)}><img className="card-img-top" data-src={"holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text="+obj.name} alt="Card image cap" /></Link>
           </div>
         </div>
       );
@@ -101,9 +105,10 @@ class Home extends Component {
 
 export default connect(
   (state) => ({
-    industries: state.industries.industryList
+    industryList: state.industries.industryList,
+    selectedIndustry: state.industries.selectedIndustry,
   }),
   (dispatch) => bindActionCreators({ 
-
-   }, dispatch)
+    selectIndustry
+  }, dispatch)
 )(Home);
