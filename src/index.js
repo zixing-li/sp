@@ -19,14 +19,14 @@ import { PersistGate } from 'redux-persist/integration/react'
 ReactDOM.render((
   <BrowserRouter>
     <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <App>
-        <Route exact path="/" component={Home} />
-        <Route path="/i/:industryName" component={Industry} />
-        <Route path="/package" component={Package} />
-        <Route path="/analytics" component={Analytics} />
-        <Route path="/signin" component={SignIn} />
-      </App>
+      <PersistGate loading={null} persistor={persistor}> 
+        <App>
+          <Route exact path="/" component={Home} />
+          <Route path="/i/:industryName" component={Industry} />
+          <Route path="/package" component={Package} />
+          <Route path="/analytics" component={Analytics} />
+          <Route path="/signin" component={SignIn} />
+        </App>
       </PersistGate>
     </Provider>
   </BrowserRouter>
