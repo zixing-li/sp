@@ -16,7 +16,7 @@ const Navigation = () => {
             <Link to="/" className="nav-link">Home <span className="sr-only">(current)</span></Link>
           </li>
           <li className="nav-item">
-            <Link to="/" className="nav-link">My Account</Link>
+            <Link to="/signin" className="nav-link">My Account</Link>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#">Shopping Cart</a>
