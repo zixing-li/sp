@@ -19,6 +19,9 @@ const Navigation = () => {
             <Link to="/signin" className="nav-link">My Account</Link>
           </li>
           <li className="nav-item">
+            <a href="/auth/google" className="nav-link">Sign In With Google</a>
+          </li>
+          <li className="nav-item">
             <a className="nav-link" href="#">Shopping Cart</a>
           </li>
           {/* <li className="nav-item dropdown">
