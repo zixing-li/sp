@@ -5,9 +5,13 @@
   "proxy": {
     "/auth/google": {
       "target": "http://localhost:5000"
+    },
+    "/api/*": {
+      "target": "http://localhost:5000"
     }
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap": "^4.0.0",
     "chart.js": "^2.7.2",
     "font-awesome": "^4.7.0",

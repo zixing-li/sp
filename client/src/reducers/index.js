@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
-import IndustriesReducer from './IndustriesReducer'
-import PackagesReducer from './PackagesReducer'
+import authReducer from './authReducer'
+import industriesReducer from './industriesReducer'
+import packagesReducer from './packagesReducer'
 
 const rootReducer = combineReducers({
-  industries: IndustriesReducer,
-  packages: PackagesReducer,
+  industries: industriesReducer,
+  packages: packagesReducer,
+  auth: authReducer
 });
 
 export default rootReducer;

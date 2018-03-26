@@ -6,7 +6,8 @@ import App from './containers/App';
 
 import { Provider } from 'react-redux';
 // import { PersistGate } from 'redux-persist/integration/react'
-import configureStore  from './store/configureStore';
+// import configureStore  from './store/configureStore';
+import { persistor, store }  from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 
 import Home from './components/Home';
@@ -14,9 +15,8 @@ import Industry from './components/Industry';
 import Package from './components/Package';
 import Analytics from './components/Analytics';
 import SignIn from './components/SignIn';
-
-
-const { persistor, store } = configureStore()
+const Profile = () => <h2>Profile</h2>
+const AddPackage = () => <h2>Add Package</h2>
 
 ReactDOM.render((
   <BrowserRouter>
@@ -25,7 +25,9 @@ ReactDOM.render((
         <App>
           <Route exact path="/" component={Home} />
           <Route path="/i/:industryName" component={Industry} />
-          <Route path="/p/package" component={Package} />
+          <Route exact path="/p/package" component={Package} />
+          <Route path="/p/package/new" component={AddPackage} />
+          <Route path="/profile" component={Profile} />
           <Route path="/analytics" component={Analytics} />
           <Route path="/signin" component={SignIn} />
         </App>
