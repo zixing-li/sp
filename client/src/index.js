@@ -5,9 +5,8 @@ import './index.css';
 import App from './containers/App';
 
 import { Provider } from 'react-redux';
-// import { PersistGate } from 'redux-persist/integration/react'
-// import { persistor, store }  from './store/configureStore';
-import store from './store/configureStore';
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistor, store }  from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 
 import Home from './components/Home';
