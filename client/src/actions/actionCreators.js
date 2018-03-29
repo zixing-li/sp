@@ -11,9 +11,9 @@ import {
 //   }
 // };
 
-export const fetchUser = () => async dispatch => {
+export const fetchUser = () => async dispatch => { // = async (dispatch)
   const res = await axios.get('/api/current_user') // relative path to backend server
-  dispatch({ type: FETCH_USER, payload: res });
+  dispatch({ type: FETCH_USER, payload: res.data }); // res is the output from axios, underlying request made to the backend server
 }
 
 export const selectIndustry = (selectedIndustry) => ({
