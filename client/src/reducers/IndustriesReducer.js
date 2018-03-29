@@ -1,3 +1,5 @@
+import { SELECT_INDUSTRY } from '../actions/types';
+
 const initialState = {
   industryList: [
     {name: "General"},
@@ -17,10 +19,11 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch(action.type) {
-    case 'SELECT_INDUSTRY':
-      console.log("reducer - select industry:" + action.selectedIndustry.name);
+    case SELECT_INDUSTRY:
+      console.log("industries reducer - select industry:" + action.selectedIndustry.name);
       return {...state, selectedIndustry: action.selectedIndustry};
     default: 
+      console.log("industries reducer - default")
       return state;
   }
 }

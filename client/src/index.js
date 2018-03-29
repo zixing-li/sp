@@ -5,9 +5,9 @@ import './index.css';
 import App from './containers/App';
 
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react'
-import configureStore  from './store/configureStore';
-import { persistor, store }  from './store/configureStore';
+// import { PersistGate } from 'redux-persist/integration/react'
+// import { persistor, store }  from './store/configureStore';
+import store from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 
 import Home from './components/Home';
@@ -21,7 +21,7 @@ const AddPackage = () => <h2>Add Package</h2>
 ReactDOM.render((
   <BrowserRouter>
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}> 
+      {/* <PersistGate loading={null} persistor={persistor}>  */}
         <App>
           <Route exact path="/" component={Home} />
           <Route path="/i/:industryName" component={Industry} />
@@ -31,9 +31,10 @@ ReactDOM.render((
           <Route path="/analytics" component={Analytics} />
           <Route path="/signin" component={SignIn} />
         </App>
-      </PersistGate>
+      {/* </PersistGate> */}
     </Provider>
   </BrowserRouter>
 ), document.getElementById('root'));
 
+// ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();

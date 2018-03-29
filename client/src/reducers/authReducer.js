@@ -6,10 +6,10 @@ export default function(state = initialState, action) {
   console.log(action);
   switch(action.type) {
     case FETCH_USER:
-      console.log("reducer - fetch user");
+      console.log("auth reducer - fetch user");
       return action.payload || false; // if empty string, false
     default: 
-      console.log("reducer - default");
+      console.log("auth reducer - default");
       return state;
   }
 }

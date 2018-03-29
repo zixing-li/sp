@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {
-  FETCH_USER
+  FETCH_USER,
+  SELECT_INDUSTRY
 } from './types';
 
 // export const fetchUser = () => {
@@ -17,6 +18,6 @@ export const fetchUser = () => async dispatch => { // = async (dispatch)
 }
 
 export const selectIndustry = (selectedIndustry) => ({
-  type: 'SELECT_INDUSTRY',
+  type: SELECT_INDUSTRY,
   selectedIndustry
 });
