@@ -16,7 +16,7 @@ const SignIn = () => {
         </label>
       </div>
       <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button> */}
-      <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in with Google</button>
+      <button className="btn btn-lg btn-primary btn-block" type="submit" onClick="window.location='/auth/google'">Sign in with Google</button>
       <p className="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
     </form>
   )

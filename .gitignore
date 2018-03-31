@@ -2,6 +2,8 @@
 
 # keys
 keys.js
+dev.js
+prod.js
 
 # dependencies
 /node_modules

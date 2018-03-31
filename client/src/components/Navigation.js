@@ -20,7 +20,7 @@ class Navigation extends Component {
               My Account
             </a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-              <Link to="/profile" a className="dropdown-item">Profile</Link>
+              <Link to="/profile" className="dropdown-item">Profile</Link>
               <a className="dropdown-item" href="#">Another action</a>
               <div className="dropdown-divider"></div>
               <a className="dropdown-item" href="/api/logout">Log out</a>
