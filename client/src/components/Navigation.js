@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import Payments from './Payments'
 
 class Navigation extends Component {
   renderContent() {
@@ -21,7 +22,7 @@ class Navigation extends Component {
             </a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
               <Link to="/profile" className="dropdown-item">Profile</Link>
-              <a className="dropdown-item" href="#">Another action</a>
+              <div className="dropdown-item"><Payments /></div>
               <div className="dropdown-divider"></div>
               <a className="dropdown-item" href="/api/logout">Log out</a>
             </div>
