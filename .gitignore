@@ -3,6 +3,8 @@
 # dev keys
 dev.js
 
+# note
+note.js
 # dependencies
 /node_modules
 
