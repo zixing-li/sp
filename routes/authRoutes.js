@@ -1,10 +1,6 @@
 const passport = require('passport');
 
 module.exports = (app) => {
-  app.get('/', (req, res)=>{ // req = incoming request, res = outgoing response
-    res.send({ hi: 'there, welcome to the backend server'});
-  });
-
   app.get('/auth/google', passport.authenticate('google', {
     scope: ['profile', 'email']
   }));
@@ -12,7 +8,8 @@ module.exports = (app) => {
   app.get(
     '/auth/google/callback', 
     passport.authenticate('google'),
-    (req, res) => {// after authenticate is executed
+    // after authenticate is executed
+    (req, res) => {
       res.redirect('/')
     }
   )
