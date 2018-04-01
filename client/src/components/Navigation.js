@@ -23,6 +23,7 @@ class Navigation extends Component {
             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
               <Link to="/profile" className="dropdown-item">Profile</Link>
               <div className="dropdown-item"><Payments /></div>
+              <div className="dropdown-item">Credits: {this.props.auth.credits}</div>
               <div className="dropdown-divider"></div>
               <a className="dropdown-item" href="/api/logout">Log out</a>
             </div>
