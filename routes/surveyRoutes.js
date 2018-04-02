@@ -7,7 +7,11 @@ const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 const Survey = mongoose.model('surveys'); // get access to mongoose model class. Written this way to avoid erros in tests, therefore not use require('surveys')
 
 module.exports = (app) => {
-  app.post('/api/surveys/post', requireLogin, requireCredits, async (req, res) => { // we can add in any number of functions in the request handler
+  app.get('/api/surveys/thanks', (req, res) => {
+    res.send('Thanks for voting!')
+  });
+
+  app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => { // we can add in any number of functions in the request handler
     const { title, subject, body, recipients } = req.body; // pull (get access to) these properties that were passed along from express from req.body
     
     const survey = new Survey({ // create a survey instance
