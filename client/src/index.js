@@ -14,6 +14,8 @@ import Industry from './components/Industry';
 import Package from './components/Package';
 import Analytics from './components/Analytics';
 import SignIn from './components/SignIn';
+import Dashboard from './components/Dashboard';
+import SurveyNew from './surveys/SurveyNew';
 const Profile = () => <h2>Profile</h2>
 const AddPackage = () => <h2>Add Package</h2>
 
@@ -24,8 +26,10 @@ ReactDOM.render((
         <App>
           <Route exact path="/" component={Home} />
           <Route path="/i/:industryName" component={Industry} />
-          <Route exact path="/p/package" component={Package} />
-          <Route path="/p/package/new" component={AddPackage} />
+          <Route exact path="/p/packages" component={Package} />
+          <Route path="/p/packages/new" component={AddPackage} />
+          <Route exact path="/surveys" component={Dashboard} />
+          <Route path="/surveys/new" component={SurveyNew} />
           <Route path="/profile" component={Profile} />
           <Route path="/analytics" component={Analytics} />
           <Route path="/signin" component={SignIn} />
@@ -35,8 +39,6 @@ ReactDOM.render((
   </BrowserRouter>
 ), document.getElementById('root'));
 
-// ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
 
-console.log('STRIPE KEY IS', process.env.REACT_APP_STRIPE_KEY);
 console.log('Environment is', process.env.NODE_ENV);

@@ -16,6 +16,7 @@
     "chart.js": "^2.7.2",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
+    "lodash": "^4.17.5",
     "popper.js": "^1.12.9",
     "react": "^16.2.0",
     "react-chartjs-2": "^2.7.0",
@@ -25,6 +26,7 @@
     "react-scripts": "1.1.1",
     "react-stripe-checkout": "^2.6.3",
     "redux": "^3.7.2",
+    "redux-form": "^7.3.0",
     "redux-persist": "^5.9.1",
     "redux-thunk": "^2.2.0"
   },
