@@ -11,6 +11,7 @@ module.exports = (app) => {
     res.send('Thanks for voting!')
   });
 
+  // this route accepts a post request
   app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => { // we can add in any number of functions in the request handler
     const { title, subject, body, recipients } = req.body; // pull (get access to) these properties that were passed along from express from req.body
     

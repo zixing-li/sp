@@ -25,6 +25,7 @@ class SurveyForm extends Component {
   render() {
     return (
       <div>
+        {/* // same as onSubmit = {this.props.handleSubmit(() => this.props.onSurveySubmit())} */}
         <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}> 
           {this.renderFields()}
           <Link to="/surveys" className="red btn-flat white-text">
@@ -44,7 +45,7 @@ class SurveyForm extends Component {
 function validate(values) {
   const errors = {};
 
-  errors.recipients = validateEmails(values.recipients || '');
+  errors.recipients = validateEmails(values.recipients || ''); // make sure the name (recipients) matches the backend
 
   _.each(formFields, ({ name }) => {
     if (!values[name]) {
@@ -55,8 +56,8 @@ function validate(values) {
   return errors;
 }
 
-export default reduxForm({ // this.props.handleSubmit and this.props.onSurveySubmit are provided by redux-form
+export default reduxForm({ // this.props.handleSubmit and this.props.onSurveySubmit are provided by this reduxform helper
   validate, // same as validate: validate, this function runs right before the user submit the form
   form: 'surveyForm',
-  destroyOnUnmount: false
+  destroyOnUnmount: false // if component is unmounted, do not clear fields. this makes sure that you can still come back from preview to see and modify the fields if you wish to revise
 })(SurveyForm);

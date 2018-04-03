@@ -1,7 +1,8 @@
 import axios from 'axios';
 import {
   FETCH_USER,
-  SELECT_INDUSTRY
+  FETCH_SURVEYS,
+  SELECT_INDUSTRY,
 } from './types';
 
 // export const fetchUser = () => {
@@ -21,6 +22,19 @@ export const handleToken = (token) => async dispatch => {
   const res = await axios.post('/api/stripe', token);
   dispatch({ type: FETCH_USER, payload: res.data });
 }
+
+export const submitSurvey = (values, history) => async dispatch => {
+  const res = await axios.post('/api/surveys', values); // post request to backend server, pass along the values object
+
+  history.push('/surveys'); // after successfully made the post request, redirect user to /surveys
+  dispatch({ type: FETCH_USER, payload: res.data }); // dispatch action after the post request is completed
+};
+
+export const fetchSurveys = () => async dispatch => {
+  const res = await axios.get('/api/surveys');
+
+  dispatch({ type: FETCH_SURVEYS, payload: res.data });
+};
 
 export const selectIndustry = (selectedIndustry) => ({
   type: SELECT_INDUSTRY,

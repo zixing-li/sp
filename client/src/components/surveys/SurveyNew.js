@@ -5,7 +5,14 @@ import SurveyForm from './SurveyForm';
 import SurveyFormReview from './SurveyFormReview';
 
 class SurveyNew extends Component {
-  state = { showFormReview: false };
+  // classical way:
+  // constructor(props) {
+  //   super(props);
+  //   this.state = { showFormReview: false };
+  // }
+
+  // same effect as above 
+  state = { showFormReview: false }; // not making a separate route for FormReview page because users can paste url to bypass to review page
 
   renderContent() {
     if (this.state.showFormReview) {
@@ -15,8 +22,8 @@ class SurveyNew extends Component {
         />
       );
     }
-
-    return (
+    
+    return ( // else reutrn SurveyForm
       <SurveyForm
         onSurveySubmit={() => this.setState({ showFormReview: true })}
       />
@@ -33,5 +40,6 @@ class SurveyNew extends Component {
 }
 
 export default reduxForm({
-  form: 'surveyForm'
+  form: 'surveyForm' 
+  // no destoryOnUnmount so that if naviagtes away from SurveyNew, clear out fields
 })(SurveyNew);

@@ -15,7 +15,7 @@ import Package from './components/Package';
 import Analytics from './components/Analytics';
 import SignIn from './components/SignIn';
 import Dashboard from './components/Dashboard';
-import SurveyNew from './surveys/SurveyNew';
+import SurveyNew from './components/surveys/SurveyNew';
 const Profile = () => <h2>Profile</h2>
 const AddPackage = () => <h2>Add Package</h2>
 

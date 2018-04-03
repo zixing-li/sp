@@ -9,7 +9,7 @@ export default ({ input, label, meta: { error, touched } }) => { // all these ar
       <input {...input} style={{ marginBottom: '5px' }} />
       <div className="red-text" style={{ marginBottom: '20px' }}>
         {touched && error}
-        {/* // if touch is true then evaluate error, if false the error will not be evaluated */}
+        {/* // if touch is true (the field is touched/clicked on) then evaluate error, if false the error will not be evaluated */}
       </div>
     </div>
   );
