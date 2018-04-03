@@ -26,15 +26,15 @@ class SurveyForm extends Component {
     return (
       <div>
         {/* // same as onSubmit = {this.props.handleSubmit(() => this.props.onSurveySubmit())} */}
-        <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}> 
+        <form style={{ margin: '2rem 10rem 0 10rem' }} onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}> 
           {this.renderFields()}
-          <Link to="/surveys" className="red btn-flat white-text">
+          <Link to="/surveys" className="btn btn-primary">
             Cancel
           </Link>
-          <button type="submit" className="teal btn-flat right white-text"> 
+          <button type="submit" className="btn btn-primary pull-right" >
           {/* this button automatically submits the form that it's inside of */}
             Next
-            <span class="glyphicon glyphicon-ok"></span>
+            <span className="glyphicon glyphicon-ok"></span>
           </button>
         </form>
       </div>

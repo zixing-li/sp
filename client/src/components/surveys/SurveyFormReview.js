@@ -23,17 +23,17 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => { 
       <h5>Please confirm your entries</h5>
       {reviewFields}
       <button
-        className="yellow darken-3 white-text btn-flat"
+        className="btn btn-primary"
         onClick={onCancel}
       >
         Back
       </button>
       <button
         onClick={() => submitSurvey(formValues, history)} // use arrow function to delay action so it doesn't get called immediately
-        className="green btn-flat right white-text"
+        className="btn btn-primary"
       >
         Send Survey
-        <span class="glyphicon glyphicon-ok">email</span>
+        <span className="glyphicon glyphicon-ok">email</span>
       </button>
     </div>
   );
