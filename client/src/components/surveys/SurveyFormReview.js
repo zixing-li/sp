@@ -30,7 +30,7 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => { 
       </button>
       <button
         onClick={() => submitSurvey(formValues, history)} // use arrow function to delay action so it doesn't get called immediately
-        className="btn btn-primary"
+        className="btn btn-primary pull-right"
       >
         Send Survey
         <span className="glyphicon glyphicon-ok">email</span>

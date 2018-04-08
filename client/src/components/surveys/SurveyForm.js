@@ -26,7 +26,7 @@ class SurveyForm extends Component {
     return (
       <div>
         {/* // same as onSubmit = {this.props.handleSubmit(() => this.props.onSurveySubmit())} */}
-        <form style={{ margin: '2rem 10rem 0 10rem' }} onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}> 
+        <form style={{ margin: '2rem 10rem 2rem 10rem' }} onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}> 
           {this.renderFields()}
           <Link to="/surveys" className="btn btn-primary">
             Cancel
