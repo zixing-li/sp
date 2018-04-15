@@ -11,30 +11,31 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => { 
     return (
       <div key={name}>
         <label>{label}</label>
-        <div>
-          {formValues[name]}
-        </div>
+        <input readonly className="form-control-plaintext" type="text" value={formValues[name]} />
+        <hr/>
       </div>
     );
   });
 
   return (
     <div>
-      <h5>Please confirm your entries</h5>
-      {reviewFields}
-      <button
-        className="btn btn-primary"
-        onClick={onCancel}
-      >
-        Back
-      </button>
-      <button
-        onClick={() => submitSurvey(formValues, history)} // use arrow function to delay action so it doesn't get called immediately
-        className="btn btn-primary pull-right"
-      >
-        Send Survey
-        <span className="glyphicon glyphicon-ok">email</span>
-      </button>
+      <form style={{ margin: '2rem 10rem 2rem 10rem' }}>
+        <h5 style={{ marginBottom: '2rem' }}>Please confirm your entries</h5>
+        {reviewFields}
+        <button
+          className="btn btn-primary"
+          onClick={onCancel}
+        >
+          Back
+        </button>
+        <button
+          onClick={() => submitSurvey(formValues, history)} // use arrow function to delay action so it doesn't get called immediately
+          className="btn btn-primary pull-right"
+        >
+          Send Survey
+          <span className="glyphicon glyphicon-ok">email</span>
+        </button>
+      </form>
     </div>
   );
 };
