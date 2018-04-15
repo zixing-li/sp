@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const Path = require('path-parser');
+const Path = require('path-parser').default;
 const { URL } = require('url');
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
@@ -14,8 +14,8 @@ module.exports = (app) => {
   //   res.send('Thanks for voting!');
   // });
   app.get('/api/surveys', requireLogin, async (req, res) => {
-    const surveys = await Survey.find({ _user: req.user.id }).select({
-      recipients: false
+    const surveys = await Survey.find({ _user: req.user.id }).select({ // find _user will also return its recipients property, which will be a huge list, therefore we use select to filter the result to make the process faster
+      recipients: false // do not include list of recipients
     });
 
     res.send(surveys);
