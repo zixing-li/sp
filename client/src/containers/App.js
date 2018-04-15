@@ -3,7 +3,7 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actionCreators';
-// import '../assets/styles/App.css';
+import '../assets/styles/App.css';
 import { withRouter } from 'react-router-dom';
 
 class App extends Component {

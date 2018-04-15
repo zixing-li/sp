@@ -10,22 +10,21 @@ class SurveyList extends Component {
   renderSurveys() {
     return this.props.surveys.reverse().map(survey => { // reverse so the lastest is on the top
       return (
-        <div className="card mb-4" key={survey._id}>
+        <div className="card mx-5 my-3" key={survey._id}>
           <div className="card-header">
             <span>{survey.title}</span>
+            <span className="small text-muted pull-right">Sent On: {new Date(survey.dateSent).toLocaleDateString()}</span>
           </div>
           <div className="card-body">
             <p className="card-text">
               {survey.body}
             </p>
-            <p className="small text-muted text-right">
-              Sent On: {new Date(survey.dateSent).toLocaleDateString()}
-            </p>
           </div>
           <div className="card-body">
+            <hr/>
             <div className="card-link">
               <a>Yes: {survey.yes}</a>
-              <a>No: {survey.no}</a>
+              <a className="px-3">No: {survey.no}</a>
             </div>
           </div>
           {/* <div class="card-footer text-muted">
@@ -38,7 +37,7 @@ class SurveyList extends Component {
 
   render() {
     return (
-      <div>
+      <div className="mx-auto px-5">
         {this.renderSurveys()}
       </div>
     );
