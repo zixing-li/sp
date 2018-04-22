@@ -1,11 +1,15 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;  // const Schema = mongoose.Schema;
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
+    Comment = require('./Comment');
 
-const postSchema = new Schema({
-  title: String,
-  body: String,
-  subject: String,
-  votes: Number, // net, could be positive or negative
+var postSchema = new Schema({
+	title: String, 
+	content: String, 
+	thumbnail_image_url: String, 
+	votes: Number,
+	comments: [Comment.Schema] 
 });
 
-mongoose.model('posts', postSchema);
+var Post = mongoose.model('posts', postSchema);
+
+module.exports = postSchema;

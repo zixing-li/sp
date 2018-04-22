@@ -44,8 +44,8 @@ class Home extends Component {
               <img className="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide" />
               <div className="container">
                 <div className="carousel-caption text-left">
-                  <h1>Example headline.</h1>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                  <h1>Know where to start</h1>
+                  <p>A community where people share their experience and knowledge.</p>
                   <p><Link to="/signin" className="btn btn-lg btn-primary" href="#" role="button">Sign up today</Link></p>
                 </div>
               </div>

@@ -7,6 +7,7 @@ const keys = require('./config/keys');
 require('./models/User'); // this has to come before importing passport
 require('./models/Survery');
 require('./services/passport');
+// const renderToString = require('react-dom/server').renderToString; // SSR
 
 mongoose.connect(keys.mongoURI);
 
