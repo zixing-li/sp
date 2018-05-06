@@ -50,6 +50,9 @@ class Navigation extends Component {
             <li className="nav-item">
               <a className="nav-link" href="#">Shopping Cart</a>
             </li>
+            <li className="nav-item">
+              <a href="/posts/new" className="btn btn-primary navbar-btn">New Post</a>
+            </li>
             {/* <li className="nav-item">
               <a className="nav-link disabled" href="#">Disabled</a>
             </li> */}

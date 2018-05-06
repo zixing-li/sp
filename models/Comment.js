@@ -1,11 +1,24 @@
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+import mongoose from 'mongoose';
 
-var commentSchema = new Schema({
-	content: String,
-	votes: Number
+const { Schema } = mongoose;
+
+const commentSchema = new Schema({
+  text: { type: String, required: true },
+  isDeleted: { type: Boolean, default: false },
+  createdAt: { type: Date, default: Date.now },
+  _creator: { type: Schema.ObjectId, ref: 'User' },
+  _post: { type: Schema.ObjectId, ref: 'Post' }
 });
 
-var Comment = mongoose.model('comments', commentSchema);
+const autoPopulateCreator = function(next) {
+  this.populate({
+    path: '_creator',
+    select: 'username createdAt -_id'
+  });
+  next(); // allows query to continue
+};
 
-module.exports = Comment;
+commentSchema.pre('find', autoPopulateCreator);
+
+const Comment = mongoose.model('Comment', commentSchema);
+export default Comment;
