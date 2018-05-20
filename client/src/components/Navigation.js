@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import Payments from './Payments'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import Payments from "./Payments";
 
 class Navigation extends Component {
   renderContent() {
@@ -9,49 +9,88 @@ class Navigation extends Component {
       case null:
         return (
           <li className="nav-item">
-            <a className="nav-link disabled" href="#">Signing In</a>
+            <a className="nav-link disabled" href="#">
+              Signing In
+            </a>
           </li>
         );
       case false:
-        return <li className="nav-item"><a href="/auth/google" className="nav-link">Sign In With Google</a></li>;
-      default: // logged in
+        return (
+          <li className="nav-item">
+            <a href="/auth/google" className="nav-link">
+              Sign In With Google
+            </a>
+          </li>
+        );
+      default:
+        // logged in
         return (
           <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a
+              className="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false">
               My Account
             </a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-              <Link to="/profile" className="dropdown-item">Profile</Link>
-              <div className="dropdown-item"><Payments /></div>
-              <div className="dropdown-item">Credits: {this.props.auth.credits}</div>
-              <div className="dropdown-divider"></div>
-              <a className="dropdown-item" href="/api/logout">Log out</a>
+              <Link to="/profile" className="dropdown-item">
+                Profile
+              </Link>
+              <div className="dropdown-item">
+                <Payments />
+              </div>
+              <div className="dropdown-item">
+                Credits: {this.props.auth.credits}
+              </div>
+              <div className="dropdown-divider" />
+              <a className="dropdown-item" href="/api/logout">
+                Log out
+              </a>
             </div>
           </li>
         );
     }
   }
 
-  render(){
+  render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <Link to="/" className="navbar-brand">SpecialProject</Link>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
+        <Link to="/" className="navbar-brand">
+          SpecialProject
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon" />
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto">
             {/* <li className="nav-item active"> */}
             <li className="nav-item">
-              <Link to="/" className="nav-link">Home <span className="sr-only">(current)</span></Link>
+              <Link to="/" className="nav-link">
+                Home <span className="sr-only">(current)</span>
+              </Link>
             </li>
             {this.renderContent()}
             <li className="nav-item">
-              <a className="nav-link" href="#">Shopping Cart</a>
+              <a className="nav-link" href="#">
+                Shopping Cart
+              </a>
             </li>
             <li className="nav-item">
-              <a href="/posts/new" className="btn btn-primary navbar-btn">New Post</a>
+              <a href="/posts/new" className="btn btn-primary navbar-btn">
+                New Post
+              </a>
             </li>
             {/* <li className="nav-item">
               <a className="nav-link disabled" href="#">Disabled</a>
@@ -63,13 +102,13 @@ class Navigation extends Component {
           </form> */}
         </div>
       </nav>
-    )
+    );
   }
 }
 
 // export default Navigation;
 
-function mapStateToProps({auth}) {
+function mapStateToProps({ auth }) {
   return { auth };
 }
 
