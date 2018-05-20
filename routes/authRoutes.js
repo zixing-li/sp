@@ -7,16 +7,13 @@ module.exports = (app) => {
   }));
 
   app.get(
-    '/auth/google/callback', 
+    '/auth/google/callback',
     passport.authenticate('google'),
     // after authenticate is executed
     (req, res) => {
       res.redirect('/')
     }
   )
-
-  // normal auth
-  // app.get('/auth/regular')
 
   app.get('/api/logout', (req, res) => {
     req.logout();
