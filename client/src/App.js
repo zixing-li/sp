@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"; // browser router mimics server
 
+import { Provider } from "react-redux";
+import store from "./store";
+
 // import Navigation from "./components/Navigation";
 // import Footer from "./components/Footer";
 import Landing from "./components/layout/Landing";
@@ -21,18 +24,20 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <div className="App">
-          <Navbar />
-          <Route exact path="/" component={Landing} />
-          <div className="container">
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
+      <Provider store={store}>
+        <Router>
+          <div className="App">
+            <Navbar />
+            <Route exact path="/" component={Landing} />
+            <div className="container">
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+            </div>
+            {/* {this.props.children} */}
+            <Footer />
           </div>
-          {/* {this.props.children} */}
-          <Footer />
-        </div>
-      </Router>
+        </Router>
+      </Provider>
     );
   }
 }
