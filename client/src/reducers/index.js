@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import authReducer from "./authReducer";
 import errorReducer from "./errorReducer";
+import profileReducer from "./profileReducer";
 import surveysReducer from "./surveysReducer";
 import industriesReducer from "./industriesReducer";
 import packagesReducer from "./packagesReducer";
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   packages: packagesReducer,
   auth: authReducer,
   errors: errorReducer,
+  profile: profileReducer,
   form: reduxForm, // provided by redux-form
   surveys: surveysReducer
 });
