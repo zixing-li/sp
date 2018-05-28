@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import authReducer from "./authReducer";
 import errorReducer from "./errorReducer";
 import profileReducer from "./profileReducer";
+import postReducer from "./postReducer";
 import surveysReducer from "./surveysReducer";
 import industriesReducer from "./industriesReducer";
 import packagesReducer from "./packagesReducer";
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   errors: errorReducer,
   profile: profileReducer,
+  post: postReducer,
   form: reduxForm, // provided by redux-form
   surveys: surveysReducer
 });
