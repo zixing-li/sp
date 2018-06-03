@@ -28,6 +28,10 @@ import Posts from "./components/posts/Posts";
 import Post from "./components/post/Post";
 import NotFound from "./components/not-found/NotFound";
 
+import Home from "./components/layout/Home";
+import Industry from "./components/industry/Industry";
+import Package from "./components/package/Package";
+
 import { connect } from "react-redux";
 import * as actions from "./actions/actionCreators";
 import "./assets/styles/App.css";
@@ -65,8 +69,10 @@ class App extends Component {
         <Router>
           <div className="App">
             <Navbar />
-            <Route exact path="/" component={Landing} />
+            <Route exact path="/" component={Home} />
             <div className="container">
+              <Route path="/i/:industryName" component={Industry} />
+              <Route exact path="/p/packages" component={Package} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/profiles" component={Profiles} />

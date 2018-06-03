@@ -6,6 +6,7 @@ import postReducer from "./postReducer";
 import surveysReducer from "./surveysReducer";
 import industriesReducer from "./industriesReducer";
 import packagesReducer from "./packagesReducer";
+import sortReducer from "./sortReducer";
 import { reducer as reduxForm } from "redux-form"; // rename reducer to reduxForm to avoid confusion
 
 const rootReducer = combineReducers({
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   profile: profileReducer,
   post: postReducer,
   form: reduxForm, // provided by redux-form
-  surveys: surveysReducer
+  surveys: surveysReducer,
+  sort: sortReducer
 });
 
 export default rootReducer;

@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
-import "./index.css";
 import App from "./App";
 
 import { Provider } from "react-redux";
@@ -9,9 +8,9 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "./store/configureStore";
 import registerServiceWorker from "./registerServiceWorker";
 
-import Home from "./components/Home";
-import Industry from "./components/Industry";
-import Package from "./components/Package";
+import Home from "./components/layout/Home";
+import Industry from "./components/industry/Industry";
+import Package from "./components/package/Package";
 import Analytics from "./components/Analytics";
 import SignIn from "./components/SignIn";
 import Dashboard from "./components/Dashboard";
