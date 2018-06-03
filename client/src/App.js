@@ -70,7 +70,7 @@ class App extends Component {
           <div className="App">
             <Navbar />
             <Route exact path="/" component={Home} />
-            <div className="container">
+            <div className="container mt-4">
               <Route path="/i/:industryName" component={Industry} />
               <Route exact path="/p/packages" component={Package} />
               <Route exact path="/register" component={Register} />

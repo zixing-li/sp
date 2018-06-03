@@ -1,7 +1,7 @@
 import { CHANGE_SORT } from "../actions/types";
 
 const initialState = {
-  sort: "popular"
+  sort: "newest"
 };
 
 export default function sort(state = initialState, action) {
