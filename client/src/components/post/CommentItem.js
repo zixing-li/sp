@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { deleteComment } from "../../actions/postActions";
+import Timestamp from "react-timestamp";
 
 class CommentItem extends Component {
   onDeleteClick(postId, commentId) {
@@ -10,7 +11,6 @@ class CommentItem extends Component {
 
   render() {
     const { comment, postId, auth } = this.props;
-
     return (
       <div className="card card-body mb-3">
         <div className="row">
@@ -25,7 +25,7 @@ class CommentItem extends Component {
             <br />
             <p className="text-center">{comment.name}</p>
           </div>
-          <div className="col-md-10">
+          <div className="col-md-7">
             <p className="lead">{comment.text}</p>
             {comment.user === auth.user.id ? (
               <button
@@ -35,6 +35,9 @@ class CommentItem extends Component {
                 <i className="fas fa-times" />
               </button>
             ) : null}
+          </div>
+          <div className="col-md-3">
+            <Timestamp time={Date.parse(comment.date) / 1000} format="full" />
           </div>
         </div>
       </div>

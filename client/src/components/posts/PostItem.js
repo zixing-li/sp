@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import classnames from "classnames";
 import { Link } from "react-router-dom";
 import { deletePost, addLike, removeLike } from "../../actions/postActions";
+import Timestamp from "react-timestamp";
 
 class PostItem extends Component {
   onDeleteClick(id) {
@@ -44,7 +45,7 @@ class PostItem extends Component {
             <br />
             <p className="text-center">{post.name}</p>
           </div>
-          <div className="col-md-10">
+          <div className="col-md-7">
             <p className="lead">{post.text}</p>
             {showActions ? (
               <span>
@@ -78,6 +79,9 @@ class PostItem extends Component {
                 ) : null}
               </span>
             ) : null}
+          </div>
+          <div className="col-md-3 float-right">
+            <Timestamp time={Date.parse(post.date) / 1000} format="full" />
           </div>
         </div>
       </div>
