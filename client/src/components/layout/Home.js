@@ -3,23 +3,23 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import "../../assets/styles/Home.css";
 import { Link } from "react-router-dom";
-import { selectIndustry } from "../../actions/actionCreators";
+import { selectCategory } from "../../actions/actionCreators";
 
 // To Do: make Landing the banner in Home page with smaller picture. only visible when not signed in
 class Home extends Component {
-  renderIndustryThumbnails = () => {
-    const industryList = this.props.industryList;
-    if (!industryList) {
+  renderCategoryThumbnails = () => {
+    const categoryList = this.props.categoryList;
+    if (!categoryList) {
       return;
     }
 
-    const industryThumbnails = industryList.map((obj, i) => {
+    const categoryThumbnails = categoryList.map((obj, i) => {
       return (
         <div className="col-md-4" key={`thumbnail${i}`}>
           <div className="card mb-4 box-shadow">
             <Link
-              to={`/i/${obj.name}`}
-              onClick={() => this.props.selectIndustry(obj)}>
+              to={`/c/${obj.name}`}
+              onClick={() => this.props.selectCategory(obj)}>
               <img
                 className="card-img-top"
                 data-src={
@@ -34,7 +34,7 @@ class Home extends Component {
       );
     });
 
-    return <div className="row">{industryThumbnails}</div>;
+    return <div className="row">{categoryThumbnails}</div>;
   };
 
   render() {
@@ -169,7 +169,7 @@ class Home extends Component {
             </div>
             <br />
             <br />
-            {this.renderIndustryThumbnails()}
+            {this.renderCategoryThumbnails()}
           </div>
         </div>
       </main>
@@ -179,13 +179,13 @@ class Home extends Component {
 
 export default connect(
   state => ({
-    industryList: state.industries.industryList,
-    selectedIndustry: state.industries.selectedIndustry
+    categoryList: state.categories.categoryList,
+    selectedCategory: state.categories.selectedCategory
   }),
   dispatch =>
     bindActionCreators(
       {
-        selectIndustry
+        selectCategory
       },
       dispatch
     )

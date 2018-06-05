@@ -29,7 +29,7 @@ import Post from "./components/post/Post";
 import NotFound from "./components/not-found/NotFound";
 
 import Home from "./components/layout/Home";
-import Industry from "./components/industry/Industry";
+import Category from "./components/category/Category";
 import Package from "./components/package/Package";
 
 import { connect } from "react-redux";
@@ -71,7 +71,7 @@ class App extends Component {
             <Navbar />
             <Route exact path="/" component={Home} />
             <div className="container mt-4">
-              <Route path="/i/:industryName" component={Industry} />
+              <Route path="/c/:categoryName" component={Category} />
               <Route exact path="/p/packages" component={Package} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />

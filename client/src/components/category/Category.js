@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import "../../assets/styles/Industry.css";
+import "../../assets/styles/Category.css";
 import { Link } from "react-router-dom";
 
-class Industry extends Component {
+class Category extends Component {
   renderPackageThumbnails = () => {
     const packageList = this.props.packageList;
     if (!packageList) {
@@ -58,7 +58,7 @@ class Industry extends Component {
         <section className="jumbotron text-center">
           <div className="container">
             <h1 className="jumbotron-heading">
-              {this.props.selectedIndustry.name}
+              {this.props.selectedCategory.name}
             </h1>
             {/* <p className="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
             <p>
@@ -100,7 +100,7 @@ class Industry extends Component {
 export default connect(
   state => ({
     packageList: state.packages.packageList,
-    selectedIndustry: state.industries.selectedIndustry
+    selectedCategory: state.categories.selectedCategory
   }),
   dispatch => bindActionCreators({}, dispatch)
-)(Industry);
+)(Category);

@@ -4,13 +4,13 @@ import errorReducer from "./errorReducer";
 import profileReducer from "./profileReducer";
 import postReducer from "./postReducer";
 import surveysReducer from "./surveysReducer";
-import industriesReducer from "./industriesReducer";
+import categoriesReducer from "./categoriesReducer";
 import packagesReducer from "./packagesReducer";
 import sortReducer from "./sortReducer";
 import { reducer as reduxForm } from "redux-form"; // rename reducer to reduxForm to avoid confusion
 
 const rootReducer = combineReducers({
-  industries: industriesReducer,
+  categories: categoriesReducer,
   packages: packagesReducer,
   auth: authReducer,
   errors: errorReducer,

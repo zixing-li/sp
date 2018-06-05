@@ -5,6 +5,8 @@ dev.js
 
 # note
 note.js
+# to-do-list
+todo.js
 # dependencies
 /node_modules
 

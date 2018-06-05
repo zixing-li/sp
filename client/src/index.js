@@ -9,7 +9,7 @@ import { persistor, store } from "./store/configureStore";
 import registerServiceWorker from "./registerServiceWorker";
 
 import Home from "./components/layout/Home";
-import Industry from "./components/industry/Industry";
+import Category from "./components/category/Category";
 import Package from "./components/package/Package";
 import Analytics from "./components/Analytics";
 import SignIn from "./components/SignIn";
@@ -24,7 +24,7 @@ ReactDOM.render(
       {/* <PersistGate loading={null} persistor={persistor}>  */}
       <App>
         <Route exact path="/" component={Home} />
-        <Route path="/i/:industryName" component={Industry} />
+        <Route path="/c/:categoryName" component={Category} />
         <Route exact path="/p/packages" component={Package} />
         <Route path="/p/packages/new" component={AddPackage} />
         <Route exact path="/surveys" component={Dashboard} />
