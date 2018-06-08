@@ -1,5 +1,10 @@
 import axios from "axios";
-import { FETCH_USER, FETCH_SURVEYS, SELECT_CATEGORY } from "./types";
+import {
+  FETCH_USER,
+  FETCH_SURVEYS,
+  SELECT_CATEGORY,
+  UPDATE_CATEGORY_LIST
+} from "./types";
 
 // export const fetchUser = () => {
 //   return function(dispatch) {
@@ -36,4 +41,9 @@ export const fetchSurveys = () => async dispatch => {
 export const selectCategory = selectedCategory => ({
   type: SELECT_CATEGORY,
   selectedCategory
+});
+
+export const updateCategoryList = filteredCategoryList => ({
+  type: UPDATE_CATEGORY_LIST,
+  filteredCategoryList
 });

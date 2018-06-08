@@ -1,6 +1,7 @@
 export const FETCH_USER = "fetch_user";
 export const FETCH_SURVEYS = "fetch_surveys";
 export const SELECT_CATEGORY = "select_category";
+export const UPDATE_CATEGORY_LIST = "update_category_list";
 
 // authActions
 export const GET_ERRORS = "GET_ERRORS";

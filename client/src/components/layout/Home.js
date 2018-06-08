@@ -3,31 +3,47 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import "../../assets/styles/Home.css";
 import { Link } from "react-router-dom";
-import { selectCategory } from "../../actions/actionCreators";
+import {
+  selectCategory,
+  updateCategoryList
+} from "../../actions/actionCreators";
 
 // To Do: make Landing the banner in Home page with smaller picture. only visible when not signed in
 class Home extends Component {
+  filterCategoryList = event => {
+    console.log("event", event.target.value.toLowerCase());
+    let updatedList = this.props.categoryList;
+    updatedList = updatedList.filter(function(category) {
+      return (
+        category.name.toLowerCase().search(event.target.value.toLowerCase()) !==
+        -1
+      );
+    });
+    this.props.updateCategoryList(updatedList);
+  };
+
   renderCategoryThumbnails = () => {
-    const categoryList = this.props.categoryList;
-    if (!categoryList) {
+    const filteredCategoryList = this.props.filteredCategoryList;
+    if (!filteredCategoryList) {
       return;
     }
 
-    const categoryThumbnails = categoryList.map((obj, i) => {
+    const categoryThumbnails = filteredCategoryList.map((obj, i) => {
       return (
         <div className="col-md-4" key={`thumbnail${i}`}>
           <div className="card mb-4 box-shadow">
             <Link
               to={`/c/${obj.name}`}
               onClick={() => this.props.selectCategory(obj)}>
-              <img
-                className="card-img-top"
-                data-src={
-                  "holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=" +
-                  obj.name
-                }
-                alt="Card image cap"
-              />
+              <a href="https://placeholder.com">
+                <img
+                  className="card-img-top"
+                  src="http://via.placeholder.com/250/55595c/eceeef?text="
+                />
+              </a>
+              <div className="img-title">
+                <h3>{obj.name}</h3>
+              </div>
             </Link>
           </div>
         </div>
@@ -155,8 +171,9 @@ class Home extends Component {
                 <input
                   className="form-control py-2 border-right-0 border"
                   type="search"
-                  defaultValue="search"
+                  placeholder="search"
                   id="example-search-input"
+                  onChange={event => this.filterCategoryList(event)}
                 />
                 <span className="input-group-append">
                   <button
@@ -180,12 +197,14 @@ class Home extends Component {
 export default connect(
   state => ({
     categoryList: state.categories.categoryList,
+    filteredCategoryList: state.categories.filteredCategoryList,
     selectedCategory: state.categories.selectedCategory
   }),
   dispatch =>
     bindActionCreators(
       {
-        selectCategory
+        selectCategory,
+        updateCategoryList
       },
       dispatch
     )
