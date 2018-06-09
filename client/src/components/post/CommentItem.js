@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import classnames from "classnames";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import {
   deleteComment,
@@ -67,12 +68,18 @@ class CommentItem extends Component {
               <i className="text-secondary fas fa-thumbs-down" />
             </button>
             {comment.user === auth.user.id ? (
-              <button
-                onClick={this.onDeleteClick.bind(this, postId, comment._id)}
-                type="button"
-                className="btn btn-danger mr-1">
-                <i className="fas fa-times" />
-              </button>
+              <span>
+                {" "}
+                <Link to={`/#`} className="btn btn-info mr-1">
+                  Edit
+                </Link>{" "}
+                <button
+                  onClick={this.onDeleteClick.bind(this, postId, comment._id)}
+                  type="button"
+                  className="btn btn-danger mr-1">
+                  Delete
+                </button>
+              </span>
             ) : null}
           </div>
           <div className="col-md-3">
@@ -97,8 +104,11 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, {
-  deleteComment,
-  addLikeComment,
-  removeLikeComment
-})(CommentItem);
+export default connect(
+  mapStateToProps,
+  {
+    deleteComment,
+    addLikeComment,
+    removeLikeComment
+  }
+)(CommentItem);

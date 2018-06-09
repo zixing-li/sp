@@ -74,12 +74,18 @@ class PostItem extends Component {
                   Comments
                 </Link>
                 {post.user === auth.user.id ? (
-                  <button
-                    onClick={this.onDeleteClick.bind(this, post._id)}
-                    type="button"
-                    className="btn btn-danger mr-1">
-                    <i className="fas fa-times" />
-                  </button>
+                  <span>
+                    {" "}
+                    <Link to={`/#`} className="btn btn-info mr-1">
+                      Edit
+                    </Link>{" "}
+                    <button
+                      onClick={this.onDeleteClick.bind(this, post._id)}
+                      type="button"
+                      className="btn btn-danger mr-1">
+                      Delete
+                    </button>
+                  </span>
                 ) : null}
               </span>
             ) : null}
@@ -109,8 +115,11 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, {
-  deletePost,
-  addLikePost,
-  removeLikePost
-})(PostItem);
+export default connect(
+  mapStateToProps,
+  {
+    deletePost,
+    addLikePost,
+    removeLikePost
+  }
+)(PostItem);
