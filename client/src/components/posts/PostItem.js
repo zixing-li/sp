@@ -92,6 +92,11 @@ class PostItem extends Component {
           </div>
           <div className="col-md-3 float-right">
             <Timestamp time={Date.parse(post.date) / 1000} format="full" />
+            <div>
+              <button type="button" className="btn btn-light mr-1">
+                {post.category}
+              </button>
+            </div>
           </div>
         </div>
       </div>

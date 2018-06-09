@@ -66,7 +66,10 @@ const postSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  category: {
+    type: String
   }
 });
 
-module.exports = Post = mongoose.model("posts", postSchema); // plural or singular?
+module.exports = Post = mongoose.model("posts", postSchema);
