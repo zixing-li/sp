@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import PackageListWrapper from "./PackageListWrapper";
 
 class Package extends Component {
   render() {
@@ -9,7 +8,7 @@ class Package extends Component {
         {/* <div><PackageListWrapper/></div> */}
         <section className="jumbotron text-center">
           <div className="container">
-            <h1 className="jumbotron-heading">E-COMMERCE PRODUCT</h1>
+            <h1 className="jumbotron-heading">Package</h1>
             <p className="lead text-muted mb-0">
               Le Lorem Ipsum est simplement du faux texte employé dans la
               composition et la mise en page avant impression. Le Lorem Ipsum
@@ -39,50 +38,9 @@ class Package extends Component {
             <div className="col-12 col-lg-6 add_to_cart_block">
               <div className="card bg-light mb-3">
                 <div className="card-body">
-                  <p className="price">99.00 $</p>
-                  <p className="price_discounted">149.90 $</p>
+                  <p className="price">$5.00</p>
+                  <p className="price_discounted">$15.00</p>
                   <form method="get" action="cart.html">
-                    <div className="form-group">
-                      <label for="colors">Color</label>
-                      <select className="custom-select" id="colors">
-                        <option selected>Select</option>
-                        <option value="1">Blue</option>
-                        <option value="2">Red</option>
-                        <option value="3">Green</option>
-                      </select>
-                    </div>
-                    <div className="form-group">
-                      <label>Quantity :</label>
-                      <div className="input-group mb-3">
-                        <div className="input-group-prepend">
-                          <button
-                            type="button"
-                            className="quantity-left-minus btn btn-danger btn-number"
-                            data-type="minus"
-                            data-field="">
-                            <i className="fa fa-minus" />
-                          </button>
-                        </div>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="quantity"
-                          name="quantity"
-                          min="1"
-                          max="100"
-                          value="1"
-                        />
-                        <div className="input-group-append">
-                          <button
-                            type="button"
-                            className="quantity-right-plus btn btn-success btn-number"
-                            data-type="plus"
-                            data-field="">
-                            <i className="fa fa-plus" />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
                     <a
                       href="cart.html"
                       className="btn btn-success btn-lg btn-block text-uppercase">
@@ -92,8 +50,8 @@ class Package extends Component {
                   <div className="product_rassurance">
                     <ul className="list-inline">
                       <li className="list-inline-item">
-                        <i className="fa fa-truck fa-2x" />
-                        <br />Fast delivery
+                        <i className="fa fa-graduation-cap fa-2x" />
+                        <br />Peer reviewed
                       </li>
                       <li className="list-inline-item">
                         <i className="fa fa-credit-card fa-2x" />
@@ -119,7 +77,7 @@ class Package extends Component {
                   </div>
                   <div className="datasheet p-3 mb-2 bg-info text-white">
                     <a href="" className="text-white">
-                      <i className="fa fa-file-text" /> Download DataSheet
+                      <i className="fa fa-file-text" /> See Preview
                     </a>
                   </div>
                 </div>
@@ -183,13 +141,11 @@ class Package extends Component {
                       aria-hidden="true"
                     />
                     <meta itemprop="datePublished" content="01-01-2016" />January
-                    01, 2018
+                    01, 2018 <span className="fa fa-star" />
                     <span className="fa fa-star" />
                     <span className="fa fa-star" />
                     <span className="fa fa-star" />
-                    <span className="fa fa-star" />
-                    <span className="fa fa-star" />
-                    by Paul Smith
+                    <span className="fa fa-star" /> by Paul Smith
                     <p className="blockquote">
                       <p className="mb-0">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -204,13 +160,12 @@ class Package extends Component {
                       aria-hidden="true"
                     />
                     <meta itemprop="datePublished" content="01-01-2016" />January
-                    01, 2018
+                    01, 2018 <span className="fa fa-star" aria-hidden="true" />
                     <span className="fa fa-star" aria-hidden="true" />
                     <span className="fa fa-star" aria-hidden="true" />
                     <span className="fa fa-star" aria-hidden="true" />
-                    <span className="fa fa-star" aria-hidden="true" />
-                    <span className="fa fa-star" aria-hidden="true" />
-                    by Paul Smith
+                    <span className="fa fa-star" aria-hidden="true" /> by Paul
+                    Smith
                     <p className="blockquote">
                       <p className="mb-0">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
