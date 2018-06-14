@@ -7,6 +7,7 @@ import Spinner from "../common/Spinner";
 import ProfileButtons from "./ProfileButtons";
 import Experience from "./Experience";
 import Education from "./Education";
+import Subscription from "./Subscription";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -36,6 +37,7 @@ class Dashboard extends Component {
             <ProfileButtons />
             <Experience experience={profile.experience} />
             <Education education={profile.education} />
+            <Subscription subscription={profile.subscription} />
             <div style={{ marginBottom: "60px" }} />
             <button
               onClick={this.onDeleteClick.bind(this)}
@@ -85,6 +87,7 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
-  Dashboard
-);
+export default connect(
+  mapStateToProps,
+  { getCurrentProfile, deleteAccount }
+)(Dashboard);

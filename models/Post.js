@@ -2,16 +2,13 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose; // const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
-  // title: { type: String, required: true },
-  // link: String,
-  // text: String,
-  // isDeleted: { type: Boolean, default: false },
-  // createdAt: { type: Date, default: Date.now },
-  // _creator: { type: Schema.ObjectId, ref: 'User' },
-  // _comments: [ { type: Schema.ObjectId, ref: 'Comment' } ] // when should I use underscore? what changes to make to other parts of the file?
   user: {
     type: Schema.Types.ObjectId,
     ref: "users"
+  },
+  category: {
+    type: Schema.Types.ObjectId,
+    ref: "categories"
   },
   text: {
     type: String,
@@ -66,10 +63,10 @@ const postSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  },
-  category: {
-    type: String
   }
+  // category: {
+  //   type: String
+  // }
 });
 
 module.exports = Post = mongoose.model("posts", postSchema);

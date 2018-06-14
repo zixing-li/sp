@@ -86,6 +86,19 @@ export const addEducation = (eduData, history) => dispatch => {
     );
 };
 
+// Add category subscription
+export const subscribeToCategory = (subData, history) => dispatch => {
+  axios
+    .post("/api/profile/subscription/category", subData)
+    .then(res => history.push("/dashboard"))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
 // Delete Experience
 export const deleteExperience = id => dispatch => {
   axios
@@ -108,6 +121,24 @@ export const deleteExperience = id => dispatch => {
 export const deleteEducation = id => dispatch => {
   axios
     .delete(`/api/profile/education/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+// Delete Category Subscription
+export const deleteCategorySubscription = id => dispatch => {
+  axios
+    .delete(`/api/profile/subscription/category/${id}`)
     .then(res =>
       dispatch({
         type: GET_PROFILE,

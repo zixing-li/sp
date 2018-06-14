@@ -24,3 +24,5 @@ export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 // sortActions
 export const CHANGE_SORT = "CHANGE_SORT";
+// filterActions
+export const CHANGE_FILTER = "CHANGE_FILTER";

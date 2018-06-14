@@ -7,6 +7,10 @@ import { clearCurrentProfile } from "./actions/profileActions";
 
 import { Provider } from "react-redux";
 import store from "./store";
+// import configureStore from "./store";
+// import { persistor, store } from "./store";
+
+import { PersistGate } from "redux-persist/integration/react";
 
 import PrivateRoute from "./components/common/PrivateRoute";
 
@@ -33,9 +37,11 @@ import Category from "./components/category/Category";
 import Package from "./components/package/Package";
 
 import { connect } from "react-redux";
-import * as actions from "./actions/actionCreators";
+// import * as actions from "./actions/actionCreators";
 import "./assets/styles/App.css";
-import { withRouter } from "react-router-dom";
+// import { withRouter } from "react-router-dom";
+
+// const { persistor, store } = configureStore();
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -59,13 +65,14 @@ if (localStorage.jwtToken) {
 }
 
 class App extends Component {
-  componentDidMount() {
-    this.props.fetchUser();
-  }
+  // componentDidMount() {
+  //   this.props.fetchUser();
+  // }
 
   render() {
     return (
       <Provider store={store}>
+        {/* <PersistGate loading={<div>LOADING</div>} persistor={persistor}> */}
         <Router>
           <div className="App">
             <Navbar />
@@ -120,10 +127,22 @@ class App extends Component {
             <Footer />
           </div>
         </Router>
+        {/* </PersistGate> */}
       </Provider>
     );
   }
 }
 
-// export default connect(null, actions)(App);
-export default withRouter(connect(null, actions)(App));
+// export default connect(
+//   null,
+//   actions
+// )(App);
+
+// export default withRouter(
+//   connect(
+//     null,
+//     actions
+//   )(App)
+// );
+
+export default App;

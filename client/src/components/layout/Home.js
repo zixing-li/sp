@@ -35,12 +35,11 @@ class Home extends Component {
             <Link
               to={`/c/${obj.name}`}
               onClick={() => this.props.selectCategory(obj)}>
-              <a href="https://placeholder.com">
-                <img
-                  className="card-img-top"
-                  src="http://via.placeholder.com/250/55595c/eceeef?text="
-                />
-              </a>
+              <img
+                className="card-img-top"
+                src="https://dummyimage.com/600x400/55595c/fff"
+                alt="Card image cap"
+              />
               <div className="img-title">
                 <h3>{obj.name}</h3>
               </div>

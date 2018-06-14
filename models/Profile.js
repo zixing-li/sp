@@ -1,12 +1,10 @@
-const mongoose = require('mongoose');
-const {
-  Schema
-} = mongoose; // const Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const { Schema } = mongoose; // const Schema = mongoose.Schema;
 
 const profileSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId, // associate user by id
-    ref: 'users'
+    ref: "users"
   },
   handle: {
     type: String,
@@ -16,13 +14,15 @@ const profileSchema = new Schema({
   company: {
     type: String
   },
-  website: { // company or personsal
+  website: {
+    // company or personsal
     type: String
   },
   location: {
     type: String
   },
-  status: { // current job title
+  status: {
+    // current job title
     type: String,
     required: true
   },
@@ -63,8 +63,8 @@ const profileSchema = new Schema({
         default: false
       },
       description: {
-        type: String,
-      },
+        type: String
+      }
     }
   ],
   education: [
@@ -95,8 +95,8 @@ const profileSchema = new Schema({
         default: false
       },
       description: {
-        type: String,
-      },
+        type: String
+      }
     }
   ],
   social: {
@@ -119,8 +119,19 @@ const profileSchema = new Schema({
       type: Date,
       default: Date.now
     }
+  },
+  subscription: {
+    subscribedCategories: [
+      {
+        code: { type: Number },
+        groups: [{ type: String }],
+        name: { type: String }
+      }
+    ],
+    subscribedToUsers: [],
+    subscribedByUsers: []
   }
-})
+});
 
-module.exports = Profile = mongoose.model('profiles', profileSchema)
+module.exports = Profile = mongoose.model("profiles", profileSchema);
 // mongoose.model('profiles', profileSchema);
