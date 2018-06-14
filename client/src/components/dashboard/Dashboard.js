@@ -9,6 +9,8 @@ import Experience from "./Experience";
 import Education from "./Education";
 import Subscription from "./Subscription";
 
+import SurveyList from "../surveys/SurveyList";
+
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getCurrentProfile();
@@ -38,7 +40,14 @@ class Dashboard extends Component {
             <Experience experience={profile.experience} />
             <Education education={profile.education} />
             <Subscription subscription={profile.subscription} />
+
             <div style={{ marginBottom: "60px" }} />
+            <div>
+              <SurveyList />
+              <Link to="/surveys/new" className="btn btn-danger">
+                <i className="material-icons">Send Surveys</i>
+              </Link>
+            </div>
             <button
               onClick={this.onDeleteClick.bind(this)}
               className="btn btn-danger">
