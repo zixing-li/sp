@@ -70,11 +70,12 @@ module.exports = app => {
       }
 
       const newPost = new Post({
-        text: req.body.text,
+        title: req.body.title,
+        bodyText: req.body.bodyText,
         name: req.body.name,
         avatar: req.body.avatar,
         user: req.user.id,
-        category: req.body.category.name
+        category: req.body.category
       });
 
       newPost.save().then(post => res.json(post));

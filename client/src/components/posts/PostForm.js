@@ -3,18 +3,23 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import { addPost } from "../../actions/postActions";
+import uuidv1 from "uuid/v1";
+import { Form, Header, Icon } from "semantic-ui-react";
+import categoryDropDown from "./CategoryDropDown";
 
 class PostForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: "",
-      errors: {}
-    };
+  //State to keep track of the post details.
+  state = {
+    title: "",
+    bodyText: "",
+    errors: {},
+    category: this.props.categories.selectedCategory.name
+  };
 
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
+  //Sets the value of the chosen category in the dropdown menu
+  setPostCategory = e => {
+    this.setState({ category: e.target.value });
+  };
 
   componentWillReceiveProps(newProps) {
     if (newProps.errors) {
@@ -22,46 +27,77 @@ class PostForm extends Component {
     }
   }
 
-  onSubmit(e) {
+  onSubmit = e => {
     e.preventDefault();
 
     const { user } = this.props.auth;
 
     const newPost = {
-      text: this.state.text,
+      title: this.state.title,
+      bodyText: this.state.bodyText,
       name: user.name,
       avatar: user.avatar,
-      category: this.props.selectedCategory
+      category: this.state.category
     };
 
     this.props.addPost(newPost);
-    this.setState({ text: "" });
-  }
+    this.setState({ title: "", bodyText: "" });
+  };
 
-  onChange(e) {
+  onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
-  }
+  };
 
   render() {
-    const { errors } = this.state;
+    const { title, bodyText, errors } = this.state;
 
     return (
-      <div className="post-form mb-3">
+      <div className="post-form mt-3 mb-3">
         <div className="card card-info">
-          <div className="card-header bg-info text-white">Say Somthing...</div>
+          <div className="card-header bg-info text-white">Add Post</div>
           <div className="card-body">
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
-                <TextAreaFieldGroup
-                  placeholder="Create a post"
-                  name="text"
-                  value={this.state.text}
+                <label htmlFor="postCategory">Choose Category</label>
+                <select
+                  required
+                  className="form-control"
+                  id="postCategory"
+                  name="postCategory"
+                  value={this.state.category}
+                  onChange={this.setPostCategory}>
+                  {categoryDropDown.map((category, index) => (
+                    <option key={index}>{category.text}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="formGroupExampleInput">Post Title</label>
+                <input
+                  required
+                  type="text"
+                  className="form-control"
+                  id="post-title"
+                  placeholder="Post Title"
+                  name="title"
+                  value={title}
                   onChange={this.onChange}
-                  error={errors.text}
                 />
               </div>
-              <button type="submit" className="btn btn-dark">
-                Submit
+              <div className="form-group">
+                <label htmlFor="postContent">Post Content</label>
+                <textarea
+                  className="form-control"
+                  id="body-text"
+                  rows="3"
+                  placeholder="Post Content"
+                  name="bodyText"
+                  value={bodyText}
+                  onChange={this.onChange}
+                />
+              </div>
+              <button type="submit" className="btn btn-outline-info mr-1">
+                Add Post
               </button>
             </form>
           </div>
@@ -80,7 +116,7 @@ PostForm.propTypes = {
 const mapStateToProps = state => ({
   auth: state.auth,
   errors: state.errors,
-  selectedCategory: state.categories.selectedCategory
+  categories: state.categories
 });
 
 export default connect(

@@ -9,6 +9,15 @@ import {
   removeLikePost
 } from "../../actions/postActions";
 import Timestamp from "react-timestamp";
+// import {
+//   Header,
+//   Segment,
+//   Button,
+//   Icon,
+//   List,
+//   Form,
+//   Responsive
+// } from "semantic-ui-react";
 
 class PostItem extends Component {
   onDeleteClick(id) {
@@ -36,68 +45,58 @@ class PostItem extends Component {
     const { post, auth, showActions } = this.props;
 
     return (
-      <div className="card card-body mb-3">
-        <div className="row">
-          <div className="col-md-2">
-            <a href="profile.html">
-              <img
-                className="rounded-circle d-none d-md-block"
-                src={post.avatar}
-                alt=""
-              />
-            </a>
-            <br />
-            <p className="text-center">{post.name}</p>
+      <div className="card card-body mb-3 shadow p-3 bg-white rounded">
+        <div className="ml-5 mr-5">
+          <Link to={`/post/${post._id}`}>
+            <h2 className="mt-4 mb-3">{post.title}</h2>
+          </Link>
+          <div className="mt-3 mb-3">
+            <i className="fas fa-user" /> {post.name}
+            <i className="far fa-clock ml-5" />{" "}
+            <Timestamp time={Date.parse(post.date) / 1000} format="full" />{" "}
           </div>
-          <div className="col-md-7">
-            <p className="lead">{post.text}</p>
-            {showActions ? (
-              <span>
-                <button
-                  onClick={this.onLikeClick.bind(this, post._id)}
-                  type="button"
-                  className="btn btn-light mr-1">
-                  <i
-                    className={classnames("fas fa-thumbs-up", {
-                      "text-info": this.findUserLike(post.likes)
-                    })}
-                  />
-                  <span className="badge badge-light">{post.likes.length}</span>
-                </button>
-                <button
-                  onClick={this.onUnlikeClick.bind(this, post._id)}
-                  type="button"
-                  className="btn btn-light mr-1">
-                  <i className="text-secondary fas fa-thumbs-down" />
-                </button>
-                <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
-                  Comments
-                </Link>
-                {post.user === auth.user.id ? (
-                  <span>
-                    {" "}
-                    <Link to={`/#`} className="btn btn-info mr-1">
-                      Edit
-                    </Link>{" "}
-                    <button
-                      onClick={this.onDeleteClick.bind(this, post._id)}
-                      type="button"
-                      className="btn btn-danger mr-1">
-                      Delete
-                    </button>
-                  </span>
-                ) : null}
-              </span>
-            ) : null}
-          </div>
-          <div className="col-md-3 float-right">
-            <Timestamp time={Date.parse(post.date) / 1000} format="full" />
-            <div>
-              <button type="button" className="btn btn-light mr-1">
-                {post.category}
+          <p className="lead mb-4">{post.bodyText}</p>
+          <Link to={`/post/${post._id}`} className="btn btn-light mr-1">
+            <i className="fas fa-comment" /> {post.comments.length}
+          </Link>
+          {showActions ? (
+            <span>
+              <button
+                onClick={this.onLikeClick.bind(this, post._id)}
+                type="button"
+                className="btn btn-light mr-1">
+                <i
+                  className={classnames("fas fa-thumbs-up", {
+                    "text-info": this.findUserLike(post.likes)
+                  })}
+                />
+                <span className="badge badge-light">{post.likes.length}</span>
               </button>
-            </div>
-          </div>
+              <button
+                onClick={this.onUnlikeClick.bind(this, post._id)}
+                type="button"
+                className="btn btn-light mr-1">
+                <i className="text-secondary fas fa-thumbs-down" />
+              </button>
+              {post.user === auth.user.id ? (
+                <span className="float-right">
+                  {" "}
+                  <Link to={`/#`} className="btn btn-outline-info mr-1">
+                    Edit
+                  </Link>{" "}
+                  <button
+                    onClick={this.onDeleteClick.bind(this, post._id)}
+                    type="button"
+                    className="btn btn-outline-danger mr-1">
+                    Delete
+                  </button>
+                </span>
+              ) : null}
+            </span>
+          ) : null}
+          <button type="button" className="btn btn-light mr-1">
+            {post.category}
+          </button>
         </div>
       </div>
     );

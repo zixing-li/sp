@@ -6,11 +6,15 @@ const postSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "users"
   },
-  category: {
-    type: Schema.Types.ObjectId,
-    ref: "categories"
+  // category: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "categories"
+  // },
+  title: {
+    type: String,
+    required: true
   },
-  text: {
+  bodyText: {
     type: String,
     required: true
   },
@@ -63,10 +67,10 @@ const postSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  category: {
+    type: String
   }
-  // category: {
-  //   type: String
-  // }
 });
 
 module.exports = Post = mongoose.model("posts", postSchema);

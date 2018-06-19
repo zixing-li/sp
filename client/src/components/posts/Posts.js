@@ -28,6 +28,8 @@ class Posts extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
+              {/* <div className="page-wrapper">
+        <div className="postdetail-page-container"> */}
               <SortBy />
               <PostForm />
               {postContent}
@@ -50,4 +52,7 @@ const mapStateToProps = state => ({
   sort: state.sort
 });
 
-export default connect(mapStateToProps, { getPosts })(Posts);
+export default connect(
+  mapStateToProps,
+  { getPosts }
+)(Posts);

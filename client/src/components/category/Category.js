@@ -24,41 +24,8 @@ class Category extends Component {
 
     const packageThumbnails = packageList.map((obj, i) => {
       return (
-        // <div className="col-md-4" key={`thumbnail${i}`}>
-        //   <div className="card mb-4 box-shadow">
-        //     <Link to="/package">
-        //       <img
-        //         className="card-img-top"
-        //         data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=PackageThumbnail"
-        //         alt="Card image cap"
-        //       />
-        //     </Link>
-        //     <div className="card-body">
-        //       <p className="card-text">
-        //         This is a wider card with supporting text below as a natural
-        //         lead-in to additional content. This content is a little bit
-        //         longer.
-        //       </p>
-        //       <div className="d-flex justify-content-between align-items-center">
-        //         <div className="btn-group">
-        //           <button
-        //             type="button"
-        //             className="btn btn-sm btn-outline-secondary">
-        //             View
-        //           </button>
-        //           <button
-        //             type="button"
-        //             className="btn btn-sm btn-outline-secondary">
-        //             Edit
-        //           </button>
-        //         </div>
-        //         <small className="text-muted">9 mins</small>
-        //       </div>
-        //     </div>
-        //   </div>
-        // </div>
-        <div className="col-12 col-md-6 col-lg-4">
-          <div className="card">
+        <div className="col-12 col-md-6 col-lg-4" key={`thumbnail${i}`}>
+          <div className="card mb-4 box-shadow">
             <Link to="/p/packages">
               <img
                 className="card-img-top"
@@ -78,7 +45,7 @@ class Category extends Component {
               </p>
               <div className="row">
                 <div className="col">
-                  <p className="btn btn-danger btn-block">99.00 $</p>
+                  <p className="btn btn-danger btn-block">$5.00</p>
                 </div>
                 <div className="col">
                   <a href="#" className="btn btn-success btn-block">
@@ -138,7 +105,7 @@ class Category extends Component {
                 <nav aria-label="...">
                   <ul className="pagination">
                     <li className="page-item disabled">
-                      <a className="page-link" href="#" tabindex="-1">
+                      <a className="page-link" href="#" tabIndex="-1">
                         Previous
                       </a>
                     </li>
