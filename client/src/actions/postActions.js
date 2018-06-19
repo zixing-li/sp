@@ -11,7 +11,7 @@ import {
 } from "./types";
 
 // Add Post
-export const addPost = postData => dispatch => {
+export const addPost = (postData, history) => dispatch => {
   dispatch(clearErrors());
   axios
     .post("/api/posts", postData)
@@ -21,6 +21,8 @@ export const addPost = postData => dispatch => {
         payload: res.data
       })
     )
+    .then(history.push("/feed"))
+    // .then(res => history.push(`/post/${res.data._id}`))
     .catch(err =>
       dispatch({
         type: GET_ERRORS,

@@ -28,7 +28,7 @@ class SortBy extends Component {
   render() {
     const { value } = this.state;
     return (
-      <div className="sort">
+      <div className="sort mb-3">
         <Select
           onChange={this.setValue}
           color="teal"
@@ -46,4 +46,7 @@ const mapStateToProps = ({ sort }) => ({
   sort
 });
 
-export default connect(mapStateToProps, { changeSortAction })(SortBy);
+export default connect(
+  mapStateToProps,
+  { changeSortAction }
+)(SortBy);

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import { addPost } from "../../actions/postActions";
 import uuidv1 from "uuid/v1";
@@ -13,7 +14,8 @@ class PostForm extends Component {
     title: "",
     bodyText: "",
     errors: {},
-    category: this.props.categories.selectedCategory.name
+    category: this.props.categories.selectedCategory.name,
+    file: null
   };
 
   //Sets the value of the chosen category in the dropdown menu
@@ -38,9 +40,10 @@ class PostForm extends Component {
       name: user.name,
       avatar: user.avatar,
       category: this.state.category
+      // file: this.state.file
     };
 
-    this.props.addPost(newPost);
+    this.props.addPost(newPost, this.props.history);
     this.setState({ title: "", bodyText: "" });
   };
 
@@ -48,58 +51,70 @@ class PostForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  onFileChange(event) {
+    this.setState({ file: event.target.files[0] }); //event.target.files returns a FileList
+  }
+
   render() {
     const { title, bodyText, errors } = this.state;
 
     return (
-      <div className="post-form mt-3 mb-3">
-        <div className="card card-info">
-          <div className="card-header bg-info text-white">Add Post</div>
-          <div className="card-body">
-            <form onSubmit={this.onSubmit}>
-              <div className="form-group">
-                <label htmlFor="postCategory">Choose Category</label>
-                <select
-                  required
-                  className="form-control"
-                  id="postCategory"
-                  name="postCategory"
-                  value={this.state.category}
-                  onChange={this.setPostCategory}>
-                  {categoryDropDown.map((category, index) => (
-                    <option key={index}>{category.text}</option>
-                  ))}
-                </select>
-              </div>
-              <div className="form-group">
-                <label htmlFor="formGroupExampleInput">Post Title</label>
+      <div className="container">
+        <div className="post-form mt-3 mb-3">
+          <div className="card card-info">
+            <div className="card-header bg-info text-white">Add Post</div>
+            <div className="card-body">
+              <form onSubmit={this.onSubmit}>
+                <div className="form-group">
+                  <label htmlFor="postCategory">Choose Category</label>
+                  <select
+                    required
+                    className="form-control"
+                    id="postCategory"
+                    name="postCategory"
+                    value={this.state.category}
+                    onChange={this.setPostCategory}>
+                    {categoryDropDown.map((category, index) => (
+                      <option key={index}>{category.text}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="formGroupExampleInput">Post Title</label>
+                  <input
+                    required
+                    type="text"
+                    className="form-control"
+                    id="post-title"
+                    placeholder="Post Title"
+                    name="title"
+                    value={title}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="postContent">Post Content</label>
+                  <textarea
+                    className="form-control"
+                    id="body-text"
+                    rows="3"
+                    placeholder="Post Content"
+                    name="bodyText"
+                    value={bodyText}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <button type="submit" className="btn btn-outline-info mr-1">
+                  Add Post
+                </button>
                 <input
-                  required
-                  type="text"
-                  className="form-control"
-                  id="post-title"
-                  placeholder="Post Title"
-                  name="title"
-                  value={title}
-                  onChange={this.onChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="postContent">Post Content</label>
-                <textarea
-                  className="form-control"
-                  id="body-text"
-                  rows="3"
-                  placeholder="Post Content"
-                  name="bodyText"
-                  value={bodyText}
-                  onChange={this.onChange}
-                />
-              </div>
-              <button type="submit" className="btn btn-outline-info mr-1">
-                Add Post
-              </button>
-            </form>
+                  onChange={this.onFileChange.bind(this)}
+                  type="file"
+                  accept="image/*"
+                />{" "}
+                Add image
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -122,4 +137,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { addPost }
-)(PostForm);
+)(withRouter(PostForm));

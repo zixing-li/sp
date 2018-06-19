@@ -9,15 +9,6 @@ import {
   removeLikePost
 } from "../../actions/postActions";
 import Timestamp from "react-timestamp";
-// import {
-//   Header,
-//   Segment,
-//   Button,
-//   Icon,
-//   List,
-//   Form,
-//   Responsive
-// } from "semantic-ui-react";
 
 class PostItem extends Component {
   onDeleteClick(id) {
@@ -45,7 +36,7 @@ class PostItem extends Component {
     const { post, auth, showActions } = this.props;
 
     return (
-      <div className="card card-body mb-3 shadow p-3 bg-white rounded">
+      <div className="card card-body mb-3 shadow p-3 bg-white rounded border-top">
         <div className="ml-5 mr-5">
           <Link to={`/post/${post._id}`}>
             <h2 className="mt-4 mb-3">{post.title}</h2>

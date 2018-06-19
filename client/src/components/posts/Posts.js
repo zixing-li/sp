@@ -6,6 +6,7 @@ import PostFeed from "./PostFeed";
 import SortBy from "../common/SortBy";
 import Spinner from "../common/Spinner";
 import { getPosts } from "../../actions/postActions";
+import { Link } from "react-router-dom";
 
 class Posts extends Component {
   componentDidMount() {
@@ -26,12 +27,18 @@ class Posts extends Component {
     return (
       <div className="feed">
         <div className="container">
+          <Link to="/posts/new">
+            <button
+              type="button"
+              className="btn btn-danger fixed-button wobble"
+              style={{ zIndex: 10 }}>
+              <i className="fas fa-plus" />
+            </button>
+          </Link>
           <div className="row">
             <div className="col-md-12">
-              {/* <div className="page-wrapper">
-        <div className="postdetail-page-container"> */}
               <SortBy />
-              <PostForm />
+              {/* <PostForm /> */}
               {postContent}
             </div>
           </div>
