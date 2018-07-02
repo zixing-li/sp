@@ -11,24 +11,66 @@ import {
 } from "./types";
 
 // Add Post
-export const addPost = (postData, history) => dispatch => {
+// export const addPost = (postData, file, history) => dispatch => {
+
+//   dispatch(clearErrors());
+//   axios
+//     .post("/api/posts", postData)
+//     .then(res =>
+//       dispatch({
+//         type: ADD_POST,
+//         payload: res.data
+//       })
+//     )
+//     .then(history.push("/feed"))
+//     // .then(res => history.push(`/post/${res.data._id}`))
+//     .catch(err =>
+//       dispatch({
+//         type: GET_ERRORS,
+//         payload: err.response.data
+//       })
+//     );
+// };
+
+export const addPost = (postData, file, history) => async dispatch => {
+  // const uploadConfig = await axios.get("/api/upload");
+
+  // await axios.put(uploadConfig.data.url, file, {
+  //   headers: {
+  //     "Content-Type": file.type
+  //   }
+  // });
+  console.log("file", file);
+
+  let uploadConfig = null;
+  if (file) {
+    uploadConfig = await axios.get("/api/upload");
+    console.log("uploadConfig", uploadConfig.data.url);
+
+    console.log("content-type", file.type);
+
+    await axios.put(uploadConfig.data.url, file, {
+      headers: {
+        "Content-Type": file.type
+      }
+    });
+  }
+
+  const res = await axios.post("/api/posts", {
+    ...postData,
+    imageUrl: file ? uploadConfig.data.key : null
+  });
+
+  // const res = await axios.post("/api/posts", postData);
+
+  history.push("/feed");
+  // .then(res => history.push(`/post/${res.data._id}`))
+
   dispatch(clearErrors());
-  axios
-    .post("/api/posts", postData)
-    .then(res =>
-      dispatch({
-        type: ADD_POST,
-        payload: res.data
-      })
-    )
-    .then(history.push("/feed"))
-    // .then(res => history.push(`/post/${res.data._id}`))
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
+  dispatch({
+    type: ADD_POST,
+    payload: res.data
+  });
 };
 
 // Get Posts

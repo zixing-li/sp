@@ -43,7 +43,7 @@ class PostForm extends Component {
       // file: this.state.file
     };
 
-    this.props.addPost(newPost, this.props.history);
+    this.props.addPost(newPost, this.state.file, this.props.history);
     this.setState({ title: "", bodyText: "" });
   };
 
@@ -53,6 +53,7 @@ class PostForm extends Component {
 
   onFileChange(event) {
     this.setState({ file: event.target.files[0] }); //event.target.files returns a FileList
+    console.log("this.state.file", this.state.file);
   }
 
   render() {

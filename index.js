@@ -32,14 +32,15 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// register event handlers
-require("./routes/authRoutes")(app); // turns into a function and call the express app object
+// register route handlers
+// require("./routes/authRoutes")(app); // turns into a function and call the express app object
 require("./routes/billingRoutes")(app);
 require("./routes/surveyRoutes")(app);
 
 require("./routes/userRoutes")(app);
 require("./routes/profileRoutes")(app);
 require("./routes/postRoutes")(app);
+require("./routes/uploadRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
   // Express will serve up production assets like our main.js file, or main.css file

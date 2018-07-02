@@ -75,7 +75,8 @@ module.exports = app => {
         name: req.body.name,
         avatar: req.body.avatar,
         user: req.user.id,
-        category: req.body.category
+        category: req.body.category,
+        imageUrl: req.body.imageUrl
       });
 
       newPost.save().then(post => res.json(post));

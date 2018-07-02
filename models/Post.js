@@ -70,6 +70,9 @@ const postSchema = new Schema({
   },
   category: {
     type: String
+  },
+  imageUrl: {
+    type: String
   }
 });
 

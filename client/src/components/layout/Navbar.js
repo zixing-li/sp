@@ -28,6 +28,11 @@ class Navbar extends Component {
           </Link>
         </li>
         <li className="nav-item">
+          <a href="/auth/google" className="nav-link">
+            Sign In With Google
+          </a>
+        </li>
+        <li className="nav-item">
           <a
             href=""
             onClick={this.onLogoutClick.bind(this)}
@@ -56,6 +61,11 @@ class Navbar extends Component {
           <Link className="nav-link" to="/login">
             Login
           </Link>
+        </li>
+        <li className="nav-item">
+          <a href="/auth/google" className="nav-link">
+            Sign In With Google
+          </a>
         </li>
       </ul>
     );

@@ -32,6 +32,19 @@ class PostItem extends Component {
     }
   }
 
+  renderImage() {
+    if (this.props.post.imageUrl) {
+      return (
+        <img
+          src={
+            "https://s3.us-east-1.amazonaws.com/sp-bucket-0130/" +
+            this.props.post.imageUrl
+          }
+        />
+      );
+    }
+  }
+
   render() {
     const { post, auth, showActions } = this.props;
 
@@ -47,6 +60,7 @@ class PostItem extends Component {
             <Timestamp time={Date.parse(post.date) / 1000} format="full" />{" "}
           </div>
           <p className="lead mb-4">{post.bodyText}</p>
+          {this.renderImage()}
           <Link to={`/post/${post._id}`} className="btn btn-light mr-1">
             <i className="fas fa-comment" /> {post.comments.length}
           </Link>

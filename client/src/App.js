@@ -16,7 +16,7 @@ import PrivateRoute from "./components/common/PrivateRoute";
 
 // import Navigation from "./components/Navigation";
 // import Footer from "./components/Footer";
-import Landing from "./components/layout/Landing";
+// import Landing from "./components/layout/Landing";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Register from "./components/auth/Register";
