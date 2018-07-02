@@ -1,27 +1,32 @@
-const passport = require('passport');
+// To be removed. No longer using Google sign in
 
-module.exports = (app) => {
+const passport = require("passport");
+
+module.exports = app => {
   // Google auth
-  app.get('/auth/google', passport.authenticate('google', {
-    scope: ['profile', 'email']
-  }));
+  app.get(
+    "/auth/google",
+    passport.authenticate("google", {
+      scope: ["profile", "email"]
+    })
+  );
 
   app.get(
-    '/auth/google/callback',
-    passport.authenticate('google'),
+    "/auth/google/callback",
+    passport.authenticate("google"),
     // after authenticate is executed
     (req, res) => {
-      res.redirect('/')
+      res.redirect("/");
     }
-  )
+  );
 
-  app.get('/api/logout', (req, res) => {
+  app.get("/api/logout", (req, res) => {
     req.logout();
     // res.send(req.user); // verify that user no longer signed in. should display as an empty page because no user
-    res.redirect('/');
+    res.redirect("/");
   });
 
-  app.get('/api/current_user', (req, res) => {
+  app.get("/api/current_user", (req, res) => {
     res.send(req.user); // test to make sure that someone who's gone through OAuth flow get access to the user
   });
 };
