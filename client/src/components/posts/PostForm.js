@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import { addPost } from "../../actions/postActions";
-import uuidv1 from "uuid/v1";
-import { Form, Header, Icon } from "semantic-ui-react";
 import categoryDropDown from "./CategoryDropDown";
 
 class PostForm extends Component {

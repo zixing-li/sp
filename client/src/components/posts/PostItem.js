@@ -35,12 +35,14 @@ class PostItem extends Component {
   renderImage() {
     if (this.props.post.imageUrl) {
       return (
-        <img
-          src={
-            "https://s3.us-east-1.amazonaws.com/sp-bucket-0130/" +
-            this.props.post.imageUrl
-          }
-        />
+        <div className="mb-4">
+          <img
+            src={
+              "https://s3.us-east-1.amazonaws.com/sp-bucket-0130/" +
+              this.props.post.imageUrl
+            }
+          />
+        </div>
       );
     }
   }

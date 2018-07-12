@@ -81,6 +81,15 @@ class Category extends Component {
 
         <div className="album py-5 bg-light">
           <div className="container">
+            <Link to="/feed">
+              <button
+                type="button"
+                className="btn btn-danger btn-lg fixed-square-button wobble"
+                style={{ zIndex: 10 }}>
+                {/* <i className="fas fa-plus" /> */}
+                Discussions
+              </button>
+            </Link>
             {/* Search Bar */}
             <div className="input-group col-md-8 offset-md-2">
               <input

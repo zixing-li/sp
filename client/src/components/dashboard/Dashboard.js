@@ -42,12 +42,12 @@ class Dashboard extends Component {
             <Subscription subscription={profile.subscription} />
 
             <div style={{ marginBottom: "60px" }} />
-            <div>
+            {/* <div>
               <SurveyList />
               <Link to="/surveys/new" className="btn btn-danger">
                 <i className="material-icons">Send Surveys</i>
               </Link>
-            </div>
+            </div> */}
             <button
               onClick={this.onDeleteClick.bind(this)}
               className="btn btn-danger">

@@ -14,7 +14,7 @@ const options = [
 class SortBy extends Component {
   //Keeps track of the value of the dropdown sort menu.
   state = {
-    value: ""
+    value: "newest"
   };
 
   //Sets the value of the dropdown sort menu.
