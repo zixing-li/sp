@@ -83,6 +83,45 @@ module.exports = app => {
     }
   );
 
+  // @route   EDIT api/posts/edit/:id
+  // @desc    Edit post
+  // @access  Private
+  app.put(
+    "/api/posts/edit/:id",
+    passport.authenticate("jwt", {
+      session: false
+    }),
+    (req, res) => {
+      Profile.findOne({
+        user: req.user.id
+      }).then(profile => {
+        Post.findByIdAndUpdate(
+          req.params.id,
+          {
+            title: req.body.title,
+            bodyText: req.body.bodyText,
+            category: req.body.category
+          }
+          // { new: true }
+        )
+          .then(post => {
+            // Check for post owner
+            if (post.user.toString() !== req.user.id) {
+              return res.status(401).json({
+                notauthorized: "User not authorized"
+              });
+            }
+          })
+          .then(post => res.json(post))
+          .catch(err =>
+            res.status(404).json({
+              postnotfound: "No post found"
+            })
+          );
+      });
+    }
+  );
+
   // @route   DELETE api/posts/:id
   // @desc    Delete post
   // @access  Private

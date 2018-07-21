@@ -8,8 +8,11 @@ import {
   updateCategoryList
 } from "../../actions/actionCreators";
 
-// To Do: make Landing the banner in Home page with smaller picture. only visible when not signed in
 class Home extends Component {
+  componentWillUnmount() {
+    this.props.updateCategoryList(this.props.categoryList);
+  }
+
   filterCategoryList = event => {
     console.log("event", event.target.value.toLowerCase());
     let updatedList = this.props.categoryList;

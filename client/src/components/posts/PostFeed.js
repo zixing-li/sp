@@ -36,7 +36,9 @@ class PostFeed extends Component {
               return b.likes.length - a.likes.length;
           }
         })
-        .map(post => <PostItem key={post._id} post={post} />);
+        .map(post => (
+          <PostItem key={post._id} post={post} showActions={false} />
+        ));
     }
   }
 }

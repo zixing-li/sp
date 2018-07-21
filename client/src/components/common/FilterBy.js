@@ -226,9 +226,9 @@ options.unshift({ value: "all", text: "All" });
 
 class FilterBy extends Component {
   //Keeps track of the value of the dropdown filter menu.
+
   state = {
-    // value: ""
-    value: this.props.categories.selectedCategory.name
+    value: this.props.categories.selectedCategory.name || "all"
   };
 
   componentDidMount() {

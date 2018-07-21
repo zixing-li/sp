@@ -7,6 +7,7 @@ import {
   GET_POSTS,
   GET_POST,
   POST_LOADING,
+  EDIT_POST,
   DELETE_POST
 } from "./types";
 
@@ -38,6 +39,22 @@ export const addPost = (postData, file, history) => async dispatch => {
   dispatch(clearErrors());
   dispatch({
     type: ADD_POST,
+    payload: res.data
+  });
+};
+
+export const editPost = (postId, postData, history) => async dispatch => {
+  console.log("editPost action called. This line is right before axios.put");
+  const res = await axios.put(`/api/posts/edit/${postId}`, postData);
+
+  console.log(
+    "editPost action called. This line is right before history.push /feed"
+  );
+  history.push("/feed");
+
+  dispatch(clearErrors());
+  dispatch({
+    type: EDIT_POST,
     payload: res.data
   });
 };
